@@ -14,27 +14,33 @@
         </div>
         <div class="buttons-container">
             <div class="operadores-container">
-                <input class="botao" type="button" value="+">
-                <input class="botao" type="button" value="-">
-                <input class="botao" type="button" value="x">
-                <input class="botao" type="button" value="÷">
+                
+                <button class="botao-generic botao-operador">+</button>
+                <button class="botao-generic botao-operador">-</button>
+                <button class="botao-generic botao-operador">x</button>
+                <button class="botao-generic botao-operador">÷</button>
             </div>
             <div class="digitos-container">
-                <input class="botao" type="button" value=""> 
-                <input class="botao" type="button" value=""> 
-                <input class="botao" type="button" value=""> 
-                <input class="botao" type="button" value=""> 
-                <input class="botao" type="button" value=""> 
-                <input class="botao" type="button" value=""> 
-                <input class="botao" type="button" value=""> 
-                <input class="botao" type="button" value=""> 
-                <input class="botao" type="button" value=""> 
-                <input class="botao" type="button" value=""> 
-                <input class="botao" type="button" value=""> 
-                <input class="botao" type="button" value=""> 
-                <input class="botao" type="button" value=""> 
-                <input class="botao" type="button" value=""> 
+                <div class="numeros-container">
+                    <button class="botao-generic" onclick="chamar(7)">7</button>
+                    <button class="botao-generic">8</button>
+                    <button class="botao-generic">9</button>
+                    <button class="botao-generic">4</button>
+                    <button class="botao-generic">5</button>
+                    <button class="botao-generic">6</button>
+                    <button class="botao-generic">1</button>
+                    <button class="botao-generic">2</button>
+                    <button class="botao-generic">3</button>
+                    <button class="botao-generic">0</button>
+                    <button class="botao-generic">.</button>
+                    <button class="botao-generic">C</button>
+
+                </div>
+                <div class="input-button-container">
+                    <input class="botao-input" type="button" value="" id="input-button"> 
+                </div>
             </div>
+
         </div>
     </div>
     <script src="script.js"></script>
