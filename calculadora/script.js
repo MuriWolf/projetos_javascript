@@ -1,7 +1,22 @@
-var a = document.querySelector(".botao-generic")
+var res = document.getElementById("res")
+var conta = ""
 
-alert(a.value)
+function pegar_val(v) {
+    var res = document.getElementById("res").innerHTML
+    document.getElementById("res").innerHTML = res + v
+    }
 
-function chamar(a) {
-    
+
+function calcular() {
+    var res = document.getElementById("res").innerHTML
+    if (res) {
+        document.getElementById("res").innerHTML = eval(res)
+
+    }
+       
+}
+
+function apagar() {
+    conta = ""
+    document.getElementById("res").innerHTML = ""
 }
