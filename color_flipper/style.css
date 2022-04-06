@@ -1,0 +1,45 @@
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+.nav-center {
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.603);
+}
+
+.nav-list {
+    list-style: none;
+
+}
+
+.nav-list > li{
+    display: inline; 
+}
+
+main {
+    min-height: 85vh;
+    display: grid;
+    place-items: center;
+}
+
+.contaiener {
+    background-color:white;
+    padding:50px;
+    border-radius: 8px;
+}
+
+.contaiener > * {
+    font-size: 270%;
+}
+
+.btn {
+    display: block;
+    margin: auto;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: white;
+    font-size: 200%;
+}
