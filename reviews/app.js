@@ -80,9 +80,10 @@ prevBtn.addEventListener("click", function(){
 
 // show random person 
 randomBtn.addEventListener("click", function(){
-    getRandomNumber()
+    console.log(getRandomNumber())
+    showPerson(getRandomNumber())
 })
 
 function getRandomNumber(){
-    
+    return Math.floor(Math.random() *reviews.length)
 }
