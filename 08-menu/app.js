@@ -71,38 +71,85 @@ const menu = [
     img: "./images/item-9.jpeg",
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
+  {
+    id: 10,
+    title: "Dinner Stak",
+    category: "dinner",
+    price: 40.99,
+    img: "./images/item-10.jpeg",
+    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+  },
 ];
 
+// pega a div dos itens de dos botoes
 const sectionCenter = document.querySelector(".section-center")
-const filterBtns = document.querySelectorAll(".filter-btn")
+const btnsContainer = document.querySelector(".btn-container")
 
+// quando a pagina carregar, chama as funcoes que mostram os boteos e os itens
 window.addEventListener("DOMContentLoaded", function(){
+  displayMenuButtons()
   displayMenuItems(menu)
 })
 
-filterBtns.forEach(function(btn){
-  btn.addEventListener("click", function(e){
-    const category = e.currentTarget.dataset.id
-    const menuCategory = menu.filter(function(menuItem){
-      console.log(menuItem.category)
-    })
-  })
-})
-
+// pega cada item da lista e retorna um html com suas variaveis especificas, depois junta tudo e coloca na div de itens
 function displayMenuItems(menuItems) {
-  let displayMenu = menu.map(function(item) {
+  let displayMenu = menuItems.map(function(item) {
+
     return `<article class="menu-item">
     <img src="${item.img}" class="photo" alt="${item.title}">
     <div class="item-info">
       <header>
         <h4>${item.title}</h4>
-        <h4 class="${item.price}">$15</h4>
+        <h4 class="price">${item.price}</h4>
       </header>
       <p>${item.desc}</p>
     </div>
   </article>`
-
   })
   displayMenu = displayMenu.join("")
   sectionCenter.innerHTML = displayMenu
+}
+
+// pega as categorias existentes (sem repetir )
+function displayMenuButtons() {
+  const categories = menu.reduce(function(values, item) {
+    // caso a categoria do item nao estiver na lista "values", ele adicionara ela
+      if (!values.includes(item.category)) {
+        values.push(item.category)
+    }
+    // caso contrario ele apenas retornara ela
+    return values
+  },
+// por padrão, o "all" existe 
+["all"]
+  )
+
+  // retorna um html com um botao para cada categoria
+  const categoryBtns = categories.map(function(category) {
+    return `<button class="filter-btn" type="button" data-id="${category}">${category}</button>`
+  }).join("")
+  btnsContainer.innerHTML = categoryBtns
+  
+  const filterBtns = document.querySelectorAll(".filter-btn")
+  
+  // pega a categoria do botao que foi clicada
+  filterBtns.forEach(function(btn){
+    btn.addEventListener("click", function(e){
+      const category = e.currentTarget.dataset.id
+      
+      // retorna apenas os itens que tem a categoria do botao clicado
+      const menuCategory = menu.filter(function(menuItem){
+        if (menuItem.category === category) {
+          return menuItem 
+        }
+      })
+      
+      // mostra na tela os itens que tem a categoria do botao clicado, no caso de "all", ele mostra todos
+      if (category === "all") {
+        displayMenuItems(menu)
+      } else {
+        displayMenuItems(menuCategory)
+      }
+    })
+  })
 }

@@ -1,13 +1,14 @@
-var meuObj = new Object(),
-    str = "minhaString",
-    aleat = Math.random(),
-    obj = new Object();
+numeros = [
+    1, 2, 3, 4, 5
+]
 
-meuObj.tipo               = "Sintaxe de ponto";
-meuObj["data de criacao"] = "String com espaco";
-meuObj[str]               = "valor de String";
-meuObj[aleat]             = "Numero Aleatorio";
-meuObj[obj]               = [s=1];
-meuObj[""]                = "Mesmo uma string vazia";
+const conta = numeros.reduce(function(total, item) {
+    return total + item
+},0 )
 
-console.log(meuObj.s);
+console.log(conta)
+
+const arrayA = [10, 20, 30, 40];
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+console.log(arrayA.reduce(reducer));
+console.log(arrayA.reduce(reducer, 50));
