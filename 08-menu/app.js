@@ -73,22 +73,36 @@ const menu = [
   },
 ];
 
-const sectionCenter = querySelector(".section-center")
+const sectionCenter = document.querySelector(".section-center")
+const filterBtns = document.querySelectorAll(".filter-btn")
 
 window.addEventListener("DOMContentLoaded", function(){
-   let displayMenu = menu.map(function(item) {
-     return `
-     <article class="menu-item">
-     <img src="${item.img}" class="photo" alt="${item.title}">
-     <div class="item-info">
-       <header>
-         <h4>Buttermilk Pancakes</h4>
-         <h4 class="price">$15</h4>
-       </header>
-       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut molestiae iste, debitis libero voluptatem omnis odit doloremque atque id dolorem temporibus magnam!</p>
-     </div>
-   </article>`
-    console.log(displayMenu)
-
-   })
+  displayMenuItems(menu)
 })
+
+filterBtns.forEach(function(btn){
+  btn.addEventListener("click", function(e){
+    const category = e.currentTarget.dataset.id
+    const menuCategory = menu.filter(function(menuItem){
+      console.log(menuItem.category)
+    })
+  })
+})
+
+function displayMenuItems(menuItems) {
+  let displayMenu = menu.map(function(item) {
+    return `<article class="menu-item">
+    <img src="${item.img}" class="photo" alt="${item.title}">
+    <div class="item-info">
+      <header>
+        <h4>${item.title}</h4>
+        <h4 class="${item.price}">$15</h4>
+      </header>
+      <p>${item.desc}</p>
+    </div>
+  </article>`
+
+  })
+  displayMenu = displayMenu.join("")
+  sectionCenter.innerHTML = displayMenu
+}
